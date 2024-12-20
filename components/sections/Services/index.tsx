@@ -1,4 +1,4 @@
-import { FileSearch, BookOpen, Target, Users2, PenTool, Briefcase } from "lucide-react";
+import { FileSearch, BookOpen, Target, Users2, PenTool, ScrollText } from "lucide-react";
 import ServiceCard from "./ServiceCard";
 
 const services = [
@@ -28,9 +28,9 @@ const services = [
     description: "Professional resume writing and optimization services"
   },
   {
-    icon: Briefcase,
-    title: "Job Search Strategy",
-    description: "Effective techniques for finding and securing your ideal job"
+    icon: ScrollText,
+    title: "SOP Writing",
+    description: "Professional Statement of Purpose writing and editing services for university applications"
   }
 ];
 

@@ -65,7 +65,7 @@ export default function ContactForm() {
             id="name"
             name="name"
             required
-            placeholder="John Doe"
+            placeholder="Name"
           />
         </div>
         <div className="space-y-2">
@@ -77,7 +77,7 @@ export default function ContactForm() {
             name="email"
             type="email"
             required
-            placeholder="john@example.com"
+            placeholder="Email"
           />
         </div>
       </div>
@@ -91,7 +91,7 @@ export default function ContactForm() {
             name="phone"
             type="tel"
             required
-            placeholder="+91 9894018848"
+            placeholder="+91 XXXXX XXXXX"
           />
         </div>
         <div className="space-y-2">
@@ -118,7 +118,7 @@ export default function ContactForm() {
             <SelectItem value="resume">Resume Review</SelectItem>
             <SelectItem value="coaching">Career Coaching</SelectItem>
             <SelectItem value="interview">Interview Preparation</SelectItem>
-            <SelectItem value="psychometric">Psychometric Test (Prices in ₹)</SelectItem>
+            <SelectItem value="psychometric">Psychometric Test</SelectItem>
           </SelectContent>
         </Select>
       </div>

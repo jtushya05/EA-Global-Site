@@ -82,13 +82,8 @@ export default function TermsAndConditions() {
         <section>
           <h2 className="text-2xl font-semibold mb-4">9. Contact Information</h2>
           <p className="text-gray-700 leading-relaxed">
-            For questions about these Terms and Conditions, please contact us at:
+            For questions about these Terms and Conditions, please reach out through our website's contact form.
           </p>
-          <div className="mt-2">
-            <p className="font-medium">EA Global</p>
-            <p>Email: legal@eaglobal.com</p>
-            <p>Phone: +1 (555) 123-4567</p>
-          </div>
         </section>
 
         <p className="text-gray-500 mt-8">

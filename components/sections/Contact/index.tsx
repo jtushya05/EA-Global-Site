@@ -5,8 +5,8 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    details: "contact@eaglobal.com",
-    link: "mailto:contact@eaglobal.com"
+    details: "info@englisharenaglobal.com",
+    link: "mailto:info@englisharenaglobal.com"
   },
   {
     icon: Phone,
@@ -17,8 +17,8 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Office",
-    details: "123 Career Street, Business District, NY 10001",
-    link: "https://maps.google.com"
+    details: "127A, Brikkiln Road, Purasaiwakkam, Chennai",
+    link: "https://www.google.com/maps/place/English+Arena+Global/data=!4m2!3m1!1s0x0:0x586c91da57aa5b09?sa=X&ved=1t:2428&ictx=111"
   }
 ];
 

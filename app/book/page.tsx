@@ -66,7 +66,7 @@ export default function BookPage() {
                     id="name"
                     name="name"
                     required
-                    placeholder="John Doe"
+                    placeholder="Name"
                   />
                 </div>
                 <div className="space-y-2">
@@ -78,7 +78,7 @@ export default function BookPage() {
                     name="email"
                     type="email"
                     required
-                    placeholder="info@englisharenaglobal.com"
+                    placeholder="Email"
                   />
                 </div>
               </div>
@@ -92,7 +92,7 @@ export default function BookPage() {
                     name="phone"
                     type="tel"
                     required
-                    placeholder="+91 9894018848"
+                    placeholder="+91 XXXXX XXXXX"
                   />
                 </div>
                 <div className="space-y-2">

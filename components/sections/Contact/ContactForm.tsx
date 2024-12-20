@@ -7,6 +7,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Send } from "lucide-react";
 
+/**
+ * ContactForm component handles the submission of user contact information.
+ * It includes fields for name, email, phone, preferred date, service type, and additional notes.
+ */
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
@@ -87,7 +91,7 @@ export default function ContactForm() {
             name="phone"
             type="tel"
             required
-            placeholder="+1 (555) 000-0000"
+            placeholder="+91 9894018848"
           />
         </div>
         <div className="space-y-2">
@@ -110,18 +114,11 @@ export default function ContactForm() {
             <SelectValue placeholder="Select a service" />
           </SelectTrigger>
           <SelectContent>
-            {/* 
-              Service Type Dropdown Options
-              To add more options:
-              1. Copy a <SelectItem> line
-              2. Change the value attribute to a unique identifier (e.g., "new-service")
-              3. Change the display text between the tags
-              Example: <SelectItem value="new-service">New Service Name</SelectItem>
-            */}
             <SelectItem value="consultation">Career Consultation</SelectItem>
             <SelectItem value="resume">Resume Review</SelectItem>
             <SelectItem value="coaching">Career Coaching</SelectItem>
             <SelectItem value="interview">Interview Preparation</SelectItem>
+            <SelectItem value="psychometric">Psychometric Test (Prices in ₹)</SelectItem>
           </SelectContent>
         </Select>
       </div>

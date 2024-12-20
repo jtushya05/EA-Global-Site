@@ -78,7 +78,7 @@ export default function BookPage() {
                     name="email"
                     type="email"
                     required
-                    placeholder="john@example.com"
+                    placeholder="info@englisharenaglobal.com"
                   />
                 </div>
               </div>
@@ -92,7 +92,7 @@ export default function BookPage() {
                     name="phone"
                     type="tel"
                     required
-                    placeholder="+1 (555) 000-0000"
+                    placeholder="+91 9894018848"
                   />
                 </div>
                 <div className="space-y-2">
@@ -115,17 +115,6 @@ export default function BookPage() {
                     <SelectValue placeholder="Select a service" />
                   </SelectTrigger>
                   <SelectContent>
-                    {/* 
-                      Service Type Dropdown Options
-                      To add more options:
-                      1. Copy a <SelectItem> line
-                      2. Change the value attribute to a unique identifier (e.g., "new-service")
-                      3. Change the display text between the tags
-                      Example: <SelectItem value="new-service">New Service Name</SelectItem>
-                      
-                      Note: Keep the values consistent with the Contact form to maintain data consistency
-                      in Google Forms submissions
-                    */}
                     <SelectItem value="consultation">Career Consultation</SelectItem>
                     <SelectItem value="resume">Resume Review</SelectItem>
                     <SelectItem value="coaching">Career Coaching</SelectItem>

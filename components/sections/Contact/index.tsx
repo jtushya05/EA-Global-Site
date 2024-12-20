@@ -11,8 +11,8 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    details: "+1 (555) 000-0000",
-    link: "tel:+15550000000"
+    details: "+91 9894018848",
+    link: "tel:+919894018848"
   },
   {
     icon: MapPin,

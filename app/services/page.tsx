@@ -2,6 +2,10 @@ import { FileSearch, BookOpen, Target, Users2, PenTool, Briefcase } from "lucide
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
+/**
+ * Array of services offered by the application.
+ * Each service includes an icon, title, description, details, duration, and price.
+ */
 const services = [
   {
     icon: FileSearch,
@@ -9,7 +13,7 @@ const services = [
     description: "In-depth analysis of your skills, interests, and potential career paths",
     details: "Our career assessment service uses industry-leading tools and methodologies to help you understand your strengths, interests, and potential career paths. Through comprehensive evaluations and one-on-one discussions, we'll help you identify the most suitable career options.",
     duration: "2-3 hours",
-    price: "$199"
+    price: "5000 INR"
   },
   {
     icon: BookOpen,
@@ -17,9 +21,16 @@ const services = [
     description: "Expert advice on course selection and educational pathways",
     details: "Get personalized academic guidance to make informed decisions about your education. We'll help you choose the right courses, universities, and specializations that align with your career goals.",
     duration: "1-2 hours",
-    price: "$149"
+    price: "5500 INR"
   },
-  // ... similar detailed entries for other services
+  {
+    icon: Target,
+    title: "Psychometric Test",
+    description: "Comprehensive evaluation of your personality and cognitive abilities",
+    details: "Our psychometric test service provides a thorough assessment of your personality traits, cognitive abilities, and behavioral style. This helps in understanding your strengths and areas for development, guiding you in your career choices.",
+    duration: "1-2 hours",
+    price: "3000 INR"
+  },
 ];
 
 export default function ServicesPage() {

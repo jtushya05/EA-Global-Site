@@ -1,0 +1,151 @@
+"use client";
+
+import { useState, useRef } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Send } from "lucide-react";
+
+export default function ContactForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const formData = new FormData(e.currentTarget);
+      const name = formData.get('name') as string;
+      const email = formData.get('email') as string;
+      const phone = formData.get('phone') as string;
+      const date = formData.get('date') as string;
+      const serviceType = formData.get('serviceType') as string;
+      const notes = formData.get('notes') as string;
+
+      // Create the Google Forms submission URL
+      const url = `https://docs.google.com/forms/d/18Zx9t-TYpcN2VCGqLRS8d5MY2-Zg1fW7K4HsvowHrLM/formResponse?usp=pp_url&entry.1169845566=${encodeURIComponent(name)}&entry.2096364701=${encodeURIComponent(email)}&entry.1871500665=${encodeURIComponent(date || '')}&entry.26593180=${encodeURIComponent(serviceType)}&entry.1109080701=${encodeURIComponent(phone)}&entry.1104932019=${encodeURIComponent(notes || '')}&entry.166295812=contact`;
+
+      // Create a hidden iframe for the form submission
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+      iframe.src = url;
+
+      // Remove iframe and reset form after submission
+      setTimeout(() => {
+        if (document.body.contains(iframe)) {
+          document.body.removeChild(iframe);
+        }
+        if (formRef.current) {
+          formRef.current.reset();
+        }
+        setIsSubmitting(false);
+      }, 1000);
+
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+      <div className="grid md:grid-cols-2 gap-6">
+        <div className="space-y-2">
+          <label htmlFor="name" className="text-sm font-medium">
+            Full Name
+          </label>
+          <Input
+            id="name"
+            name="name"
+            required
+            placeholder="John Doe"
+          />
+        </div>
+        <div className="space-y-2">
+          <label htmlFor="email" className="text-sm font-medium">
+            Email
+          </label>
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            required
+            placeholder="john@example.com"
+          />
+        </div>
+      </div>
+      <div className="grid md:grid-cols-2 gap-6">
+        <div className="space-y-2">
+          <label htmlFor="phone" className="text-sm font-medium">
+            Phone Number
+          </label>
+          <Input
+            id="phone"
+            name="phone"
+            type="tel"
+            required
+            placeholder="+1 (555) 000-0000"
+          />
+        </div>
+        <div className="space-y-2">
+          <label htmlFor="date" className="text-sm font-medium">
+            Preferred Date (Optional)
+          </label>
+          <Input
+            id="date"
+            name="date"
+            type="date"
+          />
+        </div>
+      </div>
+      <div className="space-y-2">
+        <label htmlFor="serviceType" className="text-sm font-medium">
+          Service Type
+        </label>
+        <Select name="serviceType" required>
+          <SelectTrigger>
+            <SelectValue placeholder="Select a service" />
+          </SelectTrigger>
+          <SelectContent>
+            {/* 
+              Service Type Dropdown Options
+              To add more options:
+              1. Copy a <SelectItem> line
+              2. Change the value attribute to a unique identifier (e.g., "new-service")
+              3. Change the display text between the tags
+              Example: <SelectItem value="new-service">New Service Name</SelectItem>
+            */}
+            <SelectItem value="consultation">Career Consultation</SelectItem>
+            <SelectItem value="resume">Resume Review</SelectItem>
+            <SelectItem value="coaching">Career Coaching</SelectItem>
+            <SelectItem value="interview">Interview Preparation</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+      <div className="space-y-2">
+        <label htmlFor="notes" className="text-sm font-medium">
+          Additional Notes (Optional)
+        </label>
+        <Textarea
+          id="notes"
+          name="notes"
+          placeholder="Tell us about your career goals..."
+          className="h-32"
+        />
+      </div>
+      <Button type="submit" className="w-full" disabled={isSubmitting}>
+        {isSubmitting ? (
+          "Sending..."
+        ) : (
+          <>
+            Send Message
+            <Send className="ml-2 w-4 h-4" />
+          </>
+        )}
+      </Button>
+    </form>
+  );
+}

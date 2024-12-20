@@ -15,18 +15,65 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
+  const validatePhone = (phone: string) => {
+    // Remove all non-digit characters except + (for country code)
+    const cleanPhone = phone.replace(/[^\d+]/g, '');
+    // Basic validation: should start with + and have at least 10 digits
+    return cleanPhone.startsWith('+') && cleanPhone.length >= 11;
+  };
+
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const showNotification = (message: string) => {
+    if ('Notification' in window) {
+      if (Notification.permission === 'granted') {
+        new Notification('Form Submission', { body: message });
+      } else if (Notification.permission !== 'denied') {
+        Notification.requestPermission().then(permission => {
+          if (permission === 'granted') {
+            new Notification('Form Submission', { body: message });
+          }
+        });
+      }
+    }
+    // Fallback to alert
+    alert(message);
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
       const formData = new FormData(e.currentTarget);
-      const name = formData.get('name') as string;
-      const email = formData.get('email') as string;
-      const phone = formData.get('phone') as string;
+      const name = (formData.get('name') as string).trim();
+      const email = (formData.get('email') as string).trim();
+      const phone = (formData.get('phone') as string).trim();
       const date = formData.get('date') as string;
       const serviceType = formData.get('serviceType') as string;
-      const notes = formData.get('notes') as string;
+      const notes = (formData.get('notes') as string || '').trim();
+
+      // Validation
+      if (name.length < 2) {
+        showNotification('Please enter a valid name');
+        setIsSubmitting(false);
+        return;
+      }
+
+      if (!validateEmail(email)) {
+        showNotification('Please enter a valid email address');
+        setIsSubmitting(false);
+        return;
+      }
+
+      if (!validatePhone(phone)) {
+        showNotification('Please enter a valid phone number with country code (e.g., +91)');
+        setIsSubmitting(false);
+        return;
+      }
 
       // Create the Google Forms submission URL
       const url = `https://docs.google.com/forms/d/18Zx9t-TYpcN2VCGqLRS8d5MY2-Zg1fW7K4HsvowHrLM/formResponse?usp=pp_url&entry.1169845566=${encodeURIComponent(name)}&entry.2096364701=${encodeURIComponent(email)}&entry.1871500665=${encodeURIComponent(date || '')}&entry.26593180=${encodeURIComponent(serviceType)}&entry.1109080701=${encodeURIComponent(phone)}&entry.1104932019=${encodeURIComponent(notes || '')}&entry.166295812=contact`;
@@ -46,11 +93,13 @@ export default function ContactForm() {
           formRef.current.reset();
         }
         setIsSubmitting(false);
+        showNotification('Form submitted successfully! We\'ll get back to you soon.');
       }, 1000);
 
     } catch (error) {
       console.error('Form submission error:', error);
       setIsSubmitting(false);
+      showNotification('Error submitting form. Please try again later.');
     }
   };
 

@@ -48,9 +48,21 @@ export default function Contact() {
                 <div className="bg-primary/10 p-3 rounded-lg">
                   <item.icon className="w-6 h-6 text-primary" />
                 </div>
-                <div>
-                  <h3 className="font-semibold text-gray-900">{item.title}</h3>
-                  <p className="text-gray-600">{item.details}</p>
+                <div className="flex-1 -mr-4">
+                  <h3 className="font-semibold text-gray-900 pl-4">{item.title}</h3>
+                  <p className="text-gray-600 pl-4">{item.details}</p>
+                  {item.title === "Office" && (
+                    <div className="mt-4 w-full h-48 rounded-lg overflow-hidden bg-gray-100 px-4">
+                      <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.4583426221514!2d80.26173007475556!3d13.078869987253505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526f5c0eb06c05%3A0x586c91da57aa5b09!2sEnglish%20Arena%20Global!5e0!3m2!1sen!2sin!4v1710928877335!5m2!1sen!2sin"
+                        className="w-full h-full"
+                        style={{ border: 0, display: 'block', margin: 'auto' }}
+                        allowFullScreen
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                      />
+                    </div>
+                  )}
                 </div>
               </a>
             ))}

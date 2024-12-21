@@ -15,11 +15,11 @@ const stats = [
 const founder = {
   name: "Darshana Jain",
   role: "Founder & Lead Career Counsellor",
-  image: "/team/darshana.jpg",
+  image: "https://media.licdn.com/dms/image/v2/C5603AQGnX6v69OXjJg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1649003980771?e=2147483647&v=beta&t=sKJXNikLAF-IycI89d6PVKdOEMzxUIKxNk9910LpeGQ",
   bio: "With over 20 years of experience in career counselling, Darshana has helped thousands of students achieve their career goals. Her expertise in career guidance has made her one of the most sought-after counsellors in India.",
   social: {
-    linkedin: "https://linkedin.com/in/darshana-jain",
-    email: "darshana@eaglobal.com",
+    linkedin: "https://in.linkedin.com/in/darshana-englisharena",
+    email: "coachdarshana@gmail.com",
     phone: "+919894018848"
   }
 };
@@ -31,8 +31,8 @@ const experts = [
     image: "/team/expert1.jpg",
     bio: "PhD in Career Psychology with 15+ years of experience in student counselling.",
     social: {
-      linkedin: "https://linkedin.com/in/rajesh-kumar",
-      email: "rajesh@eaglobal.com"
+      linkedin: "https://counselling.englisharenaglobal.com/about#",
+      email: "info@englisharenaglobal.com"
     }
   },
   {
@@ -41,8 +41,8 @@ const experts = [
     image: "/team/expert2.jpg",
     bio: "Specialized in overseas education counselling with focus on US and UK universities.",
     social: {
-      linkedin: "https://linkedin.com/in/priya-sharma",
-      email: "priya@eaglobal.com"
+      linkedin: "https://counselling.englisharenaglobal.com/about#",
+      email: "info@englisharenaglobal.com"
     }
   },
   {
@@ -51,8 +51,8 @@ const experts = [
     image: "/team/expert3.jpg",
     bio: "Expert in psychometric assessment and career planning for high school students.",
     social: {
-      linkedin: "https://linkedin.com/in/amit-patel",
-      email: "amit@eaglobal.com"
+      linkedin: "https://counselling.englisharenaglobal.com/about#",
+      email: "info@englisharenaglobal.com"
     }
   },
   {
@@ -61,8 +61,8 @@ const experts = [
     image: "/team/expert4.jpg",
     bio: "Specializes in academic planning and college admissions guidance.",
     social: {
-      linkedin: "https://linkedin.com/in/meera-reddy",
-      email: "meera@eaglobal.com"
+      linkedin: "https://counselling.englisharenaglobal.com/about#",
+      email: "info@englisharenaglobal.com"
     }
   },
   {
@@ -71,8 +71,8 @@ const experts = [
     image: "/team/expert5.jpg",
     bio: "Bridges the gap between academia and industry with 12+ years of corporate experience.",
     social: {
-      linkedin: "https://linkedin.com/in/sanjay-verma",
-      email: "sanjay@eaglobal.com"
+      linkedin: "https://counselling.englisharenaglobal.com/about#",
+      email: "info@englisharenaglobal.com"
     }
   }
 ];

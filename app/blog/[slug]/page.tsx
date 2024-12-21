@@ -63,9 +63,7 @@ const posts = {
 };
 
 type Props = {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 };
 
 export function generateStaticParams() {
@@ -75,7 +73,8 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = posts[params.slug as keyof typeof posts];
+  const resolvedParams = await params;
+  const post = posts[resolvedParams.slug as keyof typeof posts];
   
   if (!post) {
     return {
@@ -95,8 +94,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function BlogPost({ params }: Props) {
-  const post = posts[params.slug as keyof typeof posts];
+export default async function BlogPost({ params }: Props) {
+  const resolvedParams = await params;
+  const post = posts[resolvedParams.slug as keyof typeof posts];
 
   if (!post) {
     return (

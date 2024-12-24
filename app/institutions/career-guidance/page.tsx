@@ -48,7 +48,7 @@ export default function InSchoolGuidancePage() {
                 Partner with EA Global to provide comprehensive career guidance services at your institution. Help your students discover their potential and make informed career decisions.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/book">
+                <Link href={`/book?originPage=${encodeURIComponent("institutional-career-guidance_GetStarted")}&serviceType=${encodeURIComponent("School Career Guidance Program")}`}>
                   <Button size="lg" className="w-full sm:w-auto">
                     Partner With Us <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
@@ -93,7 +93,7 @@ export default function InSchoolGuidancePage() {
             <p className="text-lg text-gray-600 mb-12">
               Join hands with EA Global to provide comprehensive career guidance services to your students. Let&apos;s work together to shape their future.
             </p>
-            <Link href="/book">
+            <Link href={`/book?originPage=${encodeURIComponent("institutional-career-guidance_GetStarted")}&serviceType=${encodeURIComponent("School Career Guidance Program")}`}>
               <Button size="lg">
                 Schedule a Discussion <ArrowRight className="ml-2 w-4 h-4" />
               </Button>

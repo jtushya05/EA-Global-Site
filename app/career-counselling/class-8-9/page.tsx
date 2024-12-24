@@ -48,7 +48,7 @@ export default function StreamSelectionPage() {
                 Make informed decisions about your academic path with expert guidance tailored for Class 8-9 students. Our counsellors help you understand your strengths and choose the perfect stream and subjects.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/book">
+                <Link href={`/book?originPage=${encodeURIComponent("career-counselling-8-9_GetStarted")}&serviceType=${encodeURIComponent("Stream Selection Counselling")}`}>
                   <Button size="lg" className="w-full sm:w-auto">
                     Book Consultation <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
@@ -88,13 +88,13 @@ export default function StreamSelectionPage() {
       {/* Why Choose Us Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">Why Choose EA Global?</h2>
-            <p className="text-lg text-gray-600 mb-12">
-              Our expert counsellors provide personalized guidance to help you make the best academic choices for your future career.
-            </p>
-            <Link href="/book">
-              <Button size="lg">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-3xl font-bold mb-6">Why Choose EA Global?</h2>
+              <p className="text-lg text-gray-600 mb-12">
+                Our expert counsellors provide personalized guidance to help you make the best academic choices for your future career.
+              </p>
+              <Link href={`/book?originPage=${encodeURIComponent("career-counselling-8-9_Button")}&serviceType=${encodeURIComponent("Stream Selection Counselling")}`}>
+                <Button size="lg">
                 Start Your Journey Today <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>

@@ -48,7 +48,7 @@ export default function BookExpertPage() {
                 Bring industry insights directly to your students through expert-led seminars and mentorship sessions. Our professionals provide valuable guidance on career paths and industry trends.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/book">
+                <Link href={`/book?originPage=${encodeURIComponent("institutional-book-expert_GetStarted")}&serviceType=${encodeURIComponent("Expert Speaker Booking")}`}>
                   <Button size="lg" className="w-full sm:w-auto">
                     Book an Expert <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
@@ -112,7 +112,7 @@ export default function BookExpertPage() {
                 Interview Preparation and Resume Building
               </li>
             </ul>
-            <Link href="/book">
+            <Link href={`/book?originPage=${encodeURIComponent("institutional-book-expert_GetStarted")}&serviceType=${encodeURIComponent("Expert Speaker Booking")}`}>
               <Button size="lg">
                 Schedule a Session <ArrowRight className="ml-2 w-4 h-4" />
               </Button>

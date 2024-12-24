@@ -48,7 +48,7 @@ export default function OverseasEducationPage() {
                 Get comprehensive guidance for your international education journey. From choosing the right country and university to visa assistance and accommodation arrangements.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/book">
+                <Link href={`/book?originPage=${encodeURIComponent("college-selection-overseas_GetStarted")}&serviceType=${encodeURIComponent("Overseas Education Counselling")}`}>
                   <Button size="lg" className="w-full sm:w-auto">
                     Start Your Journey <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
@@ -93,7 +93,7 @@ export default function OverseasEducationPage() {
             <p className="text-lg text-gray-600 mb-12">
               Take the first step towards your international education journey with our expert guidance.
             </p>
-            <Link href="/book">
+            <Link href={`/book?originPage=${encodeURIComponent("college-selection-overseas_GetStarted")}&serviceType=${encodeURIComponent("Overseas Education Counselling")}`}>
               <Button size="lg">
                 Book a Consultation <ArrowRight className="ml-2 w-4 h-4" />
               </Button>

@@ -107,7 +107,7 @@ export default function Header() {
             >
               Contact
             </Link>
-            <Link href="/book">
+            <Link href={`/book?originPage=${encodeURIComponent("header_GetStarted")}&serviceType=${encodeURIComponent("General Career Consultation")}`}>
               <Button>Get Started</Button>
             </Link>
           </nav>
@@ -183,7 +183,7 @@ export default function Header() {
                   >
                     Contact
                   </Link>
-                  <Link href="/book" className="block pt-2">
+                  <Link href={`/book?originPage=${encodeURIComponent("mobile_menu_GetStarted")}&serviceType=${encodeURIComponent("General Career Consultation")}`} className="block pt-2">
                     <Button className="w-full">Get Started</Button>
                   </Link>
                 </div>

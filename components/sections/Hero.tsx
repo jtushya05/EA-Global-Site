@@ -24,7 +24,7 @@ export default function Hero() {
           <p className="text-lg md:text-xl text-white/90 mb-8 animate-fade-in-delay">
             Expert career guidance tailored to your aspirations. Take the first step towards your dream career today.
           </p>
-          <Link href="/book">
+          <Link href={`/book?originPage=${encodeURIComponent("homepage_GetStarted")}&serviceType=${encodeURIComponent("General Career Consultation")}`}>
             <Button size="lg" className="animate-fade-in-delay-2">
               Get Started <ArrowRight className="ml-2 w-4 h-4" />
             </Button>

@@ -48,7 +48,7 @@ export default function CareerSelectionPage() {
                 Get expert guidance to make informed decisions about your career and educational journey. Our counsellors help Class 10-12 students discover and pursue their ideal career paths.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/book">
+                <Link href={`/book?originPage=${encodeURIComponent("career-counselling-10-12_GetStarted")}&serviceType=${encodeURIComponent("Career Selection Counselling")}`}>
                   <Button size="lg" className="w-full sm:w-auto">
                     Book Consultation <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
@@ -88,13 +88,13 @@ export default function CareerSelectionPage() {
       {/* CTA Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">Ready to Shape Your Future?</h2>
-            <p className="text-lg text-gray-600 mb-12">
-              Take the first step towards a successful career with personalized guidance from our expert counsellors.
-            </p>
-            <Link href="/book">
-              <Button size="lg">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-3xl font-bold mb-6">Ready to Shape Your Future?</h2>
+              <p className="text-lg text-gray-600 mb-12">
+                Take the first step towards a successful career with personalized guidance from our expert counsellors.
+              </p>
+              <Link href={`/book?originPage=${encodeURIComponent("career-counselling-10-12_Button")}&serviceType=${encodeURIComponent("Career Selection Counselling")}`}>
+                <Button size="lg">
                 Get Started Now <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>

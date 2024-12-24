@@ -1,20 +1,21 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Send } from "lucide-react";
 
 export default function BookPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
+  const searchParams = useSearchParams();
+  const [serviceType, setServiceType] = useState(searchParams.get('serviceType') || '');
+  const originPage = searchParams.get('originPage') || 'direct';
 
   const validatePhone = (phone: string) => {
-    // Remove all non-digit characters except + (for country code)
     const cleanPhone = phone.replace(/[^\d+]/g, '');
-    // Basic validation: should start with + and have at least 10 digits
     return cleanPhone.startsWith('+') && cleanPhone.length >= 11;
   };
 
@@ -35,7 +36,6 @@ export default function BookPage() {
         });
       }
     }
-    // Fallback to alert
     alert(message);
   };
 
@@ -49,10 +49,9 @@ export default function BookPage() {
       const email = (formData.get('email') as string).trim();
       const phone = (formData.get('phone') as string).trim();
       const date = formData.get('date') as string;
-      const serviceType = formData.get('serviceType') as string;
+      const serviceType = (formData.get('serviceType') as string).trim();
       const notes = (formData.get('notes') as string || '').trim();
 
-      // Validation
       if (name.length < 2) {
         showNotification('Please enter a valid name');
         setIsSubmitting(false);
@@ -71,16 +70,14 @@ export default function BookPage() {
         return;
       }
 
-      // Create the Google Forms submission URL
-      const url = `https://docs.google.com/forms/d/18Zx9t-TYpcN2VCGqLRS8d5MY2-Zg1fW7K4HsvowHrLM/formResponse?usp=pp_url&entry.1169845566=${encodeURIComponent(name)}&entry.2096364701=${encodeURIComponent(email)}&entry.1871500665=${encodeURIComponent(date || '')}&entry.26593180=${encodeURIComponent(serviceType)}&entry.1109080701=${encodeURIComponent(phone)}&entry.1104932019=${encodeURIComponent(notes || '')}&entry.166295812=book`;
+      // Create the Google Forms submission URL with originPage tracking
+      const url = `https://docs.google.com/forms/d/18Zx9t-TYpcN2VCGqLRS8d5MY2-Zg1fW7K4HsvowHrLM/formResponse?usp=pp_url&entry.1169845566=${encodeURIComponent(name)}&entry.2096364701=${encodeURIComponent(email)}&entry.1871500665=${encodeURIComponent(date || '')}&entry.26593180=${encodeURIComponent(serviceType)}&entry.1109080701=${encodeURIComponent(phone)}&entry.1104932019=${encodeURIComponent(notes || '')}&entry.166295812=${encodeURIComponent(originPage)}`;
 
-      // Create a hidden iframe for the form submission
       const iframe = document.createElement('iframe');
       iframe.style.display = 'none';
       document.body.appendChild(iframe);
       iframe.src = url;
 
-      // Remove iframe and reset form after submission
       setTimeout(() => {
         if (document.body.contains(iframe)) {
           document.body.removeChild(iframe);
@@ -159,28 +156,14 @@ export default function BookPage() {
                 <label htmlFor="serviceType" className="text-sm font-medium">
                   Service Type
                 </label>
-                {/* <Select name="serviceType" required>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a service" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="consultation">Career Consultation</SelectItem>
-                    <SelectItem value="resume">Resume Review</SelectItem>
-                    <SelectItem value="coaching">Career Coaching</SelectItem>
-                    <SelectItem value="interview">Interview Preparation</SelectItem>
-                  </SelectContent>
-                </Select> */}
-                <Select name="serviceType" required>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a service" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="consultation">Career Consultation</SelectItem>
-                    <SelectItem value="resume">Resume Review</SelectItem>
-                    <SelectItem value="coaching">Career Coaching</SelectItem>
-                    <SelectItem value="interview">Interview Preparation</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Input
+                  id="serviceType"
+                  name="serviceType"
+                  value={serviceType}
+                  onChange={(e) => setServiceType(e.target.value)}
+                  required
+                  placeholder="Enter service type"
+                />
               </div>
               <div className="space-y-2">
                 <label htmlFor="notes" className="text-sm font-medium">

@@ -48,7 +48,7 @@ export default function CareerDevelopmentPage() {
                 Whether you&apos;re planning your first career move or looking to advance your professional journey, our expert counsellors provide personalized guidance for college students and graduates.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/book">
+                <Link href={`/book?originPage=${encodeURIComponent("career-counselling-graduates_GetStarted")}&serviceType=${encodeURIComponent("Professional Career Counselling")}`}>
                   <Button size="lg" className="w-full sm:w-auto">
                     Book Consultation <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
@@ -88,13 +88,13 @@ export default function CareerDevelopmentPage() {
       {/* Resources Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">Ready to Advance Your Career?</h2>
-            <p className="text-lg text-gray-600 mb-12">
-              Get expert guidance to make informed decisions about your career path and professional development.
-            </p>
-            <Link href="/book">
-              <Button size="lg">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-3xl font-bold mb-6">Ready to Advance Your Career?</h2>
+              <p className="text-lg text-gray-600 mb-12">
+                Get expert guidance to make informed decisions about your career path and professional development.
+              </p>
+              <Link href={`/book?originPage=${encodeURIComponent("career-counselling-graduates_Button")}&serviceType=${encodeURIComponent("Professional Career Counselling")}`}>
+                <Button size="lg">
                 Schedule a Consultation <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>

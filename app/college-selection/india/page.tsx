@@ -49,7 +49,7 @@ export default function CollegeSelectionIndiaPage() {
               </p>
               <div className="space-y-4">
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="/book">
+                  <Link href={`/book?originPage=${encodeURIComponent("college-selection-india_GetStarted")}&serviceType=${encodeURIComponent("India College Selection")}`}>
                     <Button size="lg" className="w-full sm:w-auto">
                       Book Consultation <ArrowRight className="ml-2 w-4 h-4" />
                     </Button>
@@ -102,7 +102,7 @@ export default function CollegeSelectionIndiaPage() {
               <p className="text-2xl font-bold text-primary mb-2">₹5000</p>
               <p className="text-gray-600">for 2 sessions</p>
             </div>
-            <Link href="/book">
+            <Link href={`/book?originPage=${encodeURIComponent("college-selection-india_GetStarted")}&serviceType=${encodeURIComponent("India College Selection")}`}>
               <Button size="lg">
                 Book Your Sessions <ArrowRight className="ml-2 w-4 h-4" />
               </Button>

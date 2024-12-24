@@ -6,7 +6,7 @@ export default function WhatsAppUs() {
   return (
     <Link
       href="https://wa.me/919894018848" // Replace with the actual WhatsApp link
-className="fixed bottom-24 left-0 bg-green-500 hover:bg-green-600 text-white rounded-r-full px-4 py-3 shadow-lg flex items-center gap-3 transition-all duration-300 z-50 group"
+      className="fixed bottom-20 left-0 bg-green-500 hover:bg-green-600 text-white rounded-r-full px-4 py-3 shadow-lg flex items-center gap-3 transition-all duration-300 z-50 group"
       aria-label="WhatsApp us now"
       title="WhatsApp us now"
     >

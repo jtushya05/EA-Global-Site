@@ -1,35 +1,31 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { posts } from "./data/posts"; // Ensure this imports the posts correctly
+import type { BlogPost } from './types/post';
+import { Metadata } from "next";
 
-const posts = [
-  {
-    title: "How to Choose the Right Career Path",
-    excerpt: "Discover effective strategies for making informed career decisions...",
-    date: "2024-03-15",
-    readTime: "5 min read",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    slug: "choose-right-career-path"
+export const metadata: Metadata = {
+  title: "Career Insights Blog | Educational Guidance | EA Global",
+  description: "Explore expert career guidance, educational insights, and professional development tips from EA Global's counseling experts.",
+  openGraph: {
+    title: "Career Insights Blog | EA Global",
+    description: "Expert career guidance and educational insights",
+    type: "website",
   },
-  {
-    title: "Top Skills Employers Look for in 2024",
-    excerpt: "Stay ahead of the curve by developing these in-demand skills...",
-    date: "2024-03-10",
-    readTime: "4 min read",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    slug: "top-skills-2024"
-  },
-  // Add more blog posts as needed
-];
+};
 
 export default function BlogPage() {
+  // Get published posts (already filtered by date and sorted)
+  const blogPosts = Object.values(posts);
+
   return (
     <main className="min-h-screen pt-20">
       <section className="py-12">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl font-bold text-center mb-12">Career Insights Blog</h1>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post) => (
+            {blogPosts.map((post: BlogPost) => (
               <article key={post.slug} className="bg-white rounded-lg shadow-lg overflow-hidden">
                 <div className="relative h-48">
                   <Image

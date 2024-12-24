@@ -1,10 +1,27 @@
-import { Metadata } from 'next'
+import { Metadata } from 'next';
 
 declare module 'next' {
-  export interface PageProps {
-    params: { [key: string]: string }
-    searchParams?: { [key: string]: string | string[] | undefined }
+  interface PageProps {
+    params: Promise<{ [key: string]: string }>;
+    searchParams?: { [key: string]: string | string[] | undefined };
   }
 }
 
-export {}
+export interface BlogPageParams {
+  slug: string;
+}
+
+export interface GenerateMetadataProps {
+  params: BlogPageParams;
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
+
+export interface PageProps {
+  params: Promise<{ [key: string]: string }>;
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
+
+export interface BlogPostProps {
+  params: Promise<{ slug: string }>;
+  searchParams?: { [key: string]: string | string[] | undefined };
+}

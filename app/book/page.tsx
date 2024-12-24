@@ -170,17 +170,17 @@ export default function BookPage() {
                     <SelectItem value="interview">Interview Preparation</SelectItem>
                   </SelectContent>
                 </Select> */}
-                <div className="space-y-2">
-                  <label htmlFor="serviceType" className="text-sm font-medium">
-                    Service Type
-                  </label>
-                  <Input
-                    id="serviceType"
-                    name="serviceType"
-                    required
-                    placeholder="Enter service type"
-                  />
-                </div>
+                <Select name="serviceType" required>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a service" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="consultation">Career Consultation</SelectItem>
+                    <SelectItem value="resume">Resume Review</SelectItem>
+                    <SelectItem value="coaching">Career Coaching</SelectItem>
+                    <SelectItem value="interview">Interview Preparation</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               <div className="space-y-2">
                 <label htmlFor="notes" className="text-sm font-medium">

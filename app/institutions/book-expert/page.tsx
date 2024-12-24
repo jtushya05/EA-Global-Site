@@ -92,7 +92,7 @@ export default function BookExpertPage() {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-6">Available Topics</h2>
             <p className="text-lg text-gray-600 mb-8">
-              Our experts cover a wide range of topics including:
+              Our experts cover a wide range of topics, including:
             </p>
             <ul className="text-left space-y-4 mb-12">
               <li className="flex items-center gap-2">

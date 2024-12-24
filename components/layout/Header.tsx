@@ -68,13 +68,20 @@ export default function Header() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center">
             <img 
               src="/images/edupower-counselling-logo.png" 
-              alt="EA Global Logo" 
+              alt="EduPower Logo" 
               className="w-8 h-8 object-contain"
             />
-            <span className="text-xl font-bold text-primary">EA Global</span>
+            <div className="flex flex-col ml-2 min-w-[120px]">
+              <span className="text-xl font-bold text-primary -mb-1">EduPower</span>
+              <span className={`text-xs text-right w-full ${
+                pathname === '/' && !isScrolled ? 'text-white/90' : 'text-gray-600'
+              }`}>
+                by EA Global
+              </span>
+            </div>
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">

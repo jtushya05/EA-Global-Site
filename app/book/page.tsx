@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Send } from "lucide-react";
 
-export default function BookPage() {
+function BookingForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
   const searchParams = useSearchParams();
@@ -191,5 +191,21 @@ export default function BookPage() {
         </div>
       </section>
     </main>
+  );
+}
+
+export default function BookPage() {
+  return (
+    <Suspense fallback={
+      <main className="min-h-screen pt-20">
+        <section className="py-12">
+          <div className="container mx-auto px-4 max-w-2xl">
+            <h1 className="text-4xl font-bold text-center mb-8">Loading...</h1>
+          </div>
+        </section>
+      </main>
+    }>
+      <BookingForm />
+    </Suspense>
   );
 }

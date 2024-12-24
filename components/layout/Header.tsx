@@ -69,7 +69,11 @@ export default function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link href="/" className="flex items-center space-x-2">
-            <Briefcase className="w-8 h-8 text-primary" />
+            <img 
+              src="/images/edupower-counselling-logo.png" 
+              alt="EA Global Logo" 
+              className="w-8 h-8 object-contain"
+            />
             <span className="text-xl font-bold text-primary">EA Global</span>
           </Link>
 

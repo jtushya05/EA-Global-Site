@@ -4,7 +4,6 @@ import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Send } from "lucide-react";
 
 /**
@@ -158,18 +157,12 @@ export default function ContactForm() {
         <label htmlFor="serviceType" className="text-sm font-medium">
           Service Type
         </label>
-        <Select name="serviceType" required>
-          <SelectTrigger>
-            <SelectValue placeholder="Select a service" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="consultation">Career Consultation</SelectItem>
-            <SelectItem value="resume">Resume Review</SelectItem>
-            <SelectItem value="coaching">Career Coaching</SelectItem>
-            <SelectItem value="interview">Interview Preparation</SelectItem>
-            <SelectItem value="psychometric">Psychometric Test</SelectItem>
-          </SelectContent>
-        </Select>
+        <Input
+          id="serviceType"
+          name="serviceType"
+          required
+          placeholder="Enter service type"
+        />
       </div>
       <div className="space-y-2">
         <label htmlFor="notes" className="text-sm font-medium">

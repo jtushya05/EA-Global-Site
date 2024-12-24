@@ -1,3 +1,5 @@
+'use client';
+
 import Link from "next/link";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 
@@ -62,9 +64,12 @@ export default function Footer() {
               <Link href="https://www.instagram.com/eaglobaledu" className="text-gray-400 hover:text-white transition-colors">
                 <Instagram className="w-5 h-5" />
               </Link>
-              <Link href="#" className="text-gray-400 hover:text-white transition-colors">
+              <button 
+                onClick={(e) => e.preventDefault()} 
+                className="text-gray-400 hover:text-white transition-colors"
+              >
                 <Twitter className="w-5 h-5" />
-              </Link>
+              </button>
             </div>
           </div>
         </div>

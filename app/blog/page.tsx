@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
-import { posts } from "./data/posts"; // Ensure this imports the posts correctly
 import type { BlogPost } from './types/post';
 import { Metadata } from "next";
 
@@ -15,16 +14,22 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogPage() {
-  // Get published posts (already filtered by date and sorted)
-  const blogPosts = Object.values(posts);
+async function getBlogPosts(): Promise<BlogPost[]> {
+  const { getPosts } = await import('./data/posts');
+  const posts = await getPosts();
+  return Object.values(posts);
+}
 
-  return (
-    <main className="min-h-screen pt-20">
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold text-center mb-12">Career Insights Blog</h1>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+export default async function BlogPage() {
+  try {
+    const blogPosts = await getBlogPosts();
+
+    return (
+      <main className="min-h-screen pt-20">
+        <section className="py-12">
+          <div className="container mx-auto px-4">
+            <h1 className="text-4xl font-bold text-center mb-12">Career Insights Blog</h1>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.map((post: BlogPost) => (
               <article key={post.slug} className="bg-white rounded-lg shadow-lg overflow-hidden">
                 <div className="relative h-48">
@@ -54,9 +59,22 @@ export default function BlogPage() {
                 </div>
               </article>
             ))}
+            </div>
           </div>
-        </div>
-      </section>
-    </main>
-  );
+        </section>
+      </main>
+    );
+  } catch (error) {
+    console.error('Error loading blog posts:', error);
+    return (
+      <main className="min-h-screen pt-20">
+        <section className="py-12">
+          <div className="container mx-auto px-4">
+            <h1 className="text-4xl font-bold text-center mb-12">Error</h1>
+            <p className="text-center">An error occurred while loading the blog posts.</p>
+          </div>
+        </section>
+      </main>
+    );
+  }
 }

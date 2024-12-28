@@ -9,30 +9,38 @@ import { softSkillsPost } from './soft-skills-post';
 const allPosts: Record<string, BlogPost> = {
   "expert-career-counseling-future": expertCounselingPost,
   "choose-right-career-path": careerPathPost,
-  "top-skills-2024": skillsPost,
+  "top-skills-2025": skillsPost,
   "navigating-college-applications": collegeApplicationsPost,
   "role-of-soft-skills": softSkillsPost
 };
 
-// Get current date at midnight for consistent comparison
-const currentDate = new Date();
-currentDate.setHours(0, 0, 0, 0);
+// Get filtered and sorted posts
+export async function getPosts(): Promise<Record<string, BlogPost>> {
+  const currentDate = new Date();
+  currentDate.setHours(0, 0, 0, 0);
 
-// Filter and sort posts
-export const posts = Object.fromEntries(
-  Object.entries(allPosts)
-    .filter(([_, post]) => {
-      const postDate = new Date(post.date);
-      postDate.setHours(0, 0, 0, 0);
-      return postDate <= currentDate; // Show posts with dates <= current date
-    })
-    .sort(([_, a], [__, b]) => 
-      new Date(b.date).getTime() - new Date(a.date).getTime() // Sort newest first
-    )
-) as Record<string, BlogPost>;
+  return Object.fromEntries(
+    Object.entries(allPosts)
+      .filter(([_, post]) => {
+        const postDate = new Date(post.date);
+        postDate.setHours(0, 0, 0, 0);
+        return postDate <= currentDate;
+      })
+      .sort(([_, a], [__, b]) => 
+        new Date(b.date).getTime() - new Date(a.date).getTime()
+      )
+  );
+}
 
-// For static path generation, we need all slugs regardless of date
-export const getAllSlugs = () => Object.keys(allPosts);
+// For static path generation
+export async function getAllSlugs(): Promise<string[]> {
+  return Object.keys(allPosts);
+}
 
-// For individual post pages, we need access to all posts regardless of date
-export const getPostBySlug = (slug: string) => allPosts[slug];
+// For individual post pages
+export async function getPostBySlug(slug: string): Promise<BlogPost | undefined> {
+  return allPosts[slug];
+}
+
+// Export posts for direct access if needed
+export const posts = allPosts;

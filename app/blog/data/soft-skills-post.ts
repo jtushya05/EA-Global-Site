@@ -3,7 +3,7 @@ import { BlogPost } from '../types/post';
 export const softSkillsPost: BlogPost = {
   title: "The Role of Soft Skills in Building a Successful Career",
   slug: "role-of-soft-skills",
-  date: "2024-12-27", // Updated to December 24th
+  date: "2024-12-20", // Updated to a past date
   readTime: "10 min read",
   image: "https://images.pexels.com/photos/29284274/pexels-photo-29284274/free-photo-of-engaging-team-presentation-in-modern-office-setting.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   excerpt: "Discover how soft skills can enhance your career prospects and why they are essential for success in today's job market.",
@@ -15,7 +15,7 @@ export const softSkillsPost: BlogPost = {
       "@context": "https://schema.org",
       "@type": "Article",
       headline: "The Role of Soft Skills in Building a Successful Career",
-      datePublished: "2024-12-27", // Updated to match the post date
+      datePublished: "2024-12-20", // Updated to match the post date
       author: {
         "@type": "Organization",
         name: "EA Global"

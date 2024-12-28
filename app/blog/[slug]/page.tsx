@@ -2,43 +2,64 @@ import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { Metadata } from "next";
-import { getAllSlugs, getPostBySlug } from '../utils/loadPosts';
 import type { BlogPost } from '../types/post';
 
-interface Props {
-  params: { slug: string };
+async function getPostData(slug: string): Promise<BlogPost | undefined> {
+  const { getPostBySlug } = await import('../data/posts');
+  return getPostBySlug(slug);
 }
 
-export function generateStaticParams() {
-  return getAllSlugs().map((slug) => ({
-    slug: slug,
-  }));
+async function getStaticPaths() {
+  const { getAllSlugs } = await import('../data/posts');
+  return getAllSlugs();
 }
 
-export function generateMetadata({ params }: Props): Metadata {
-  const post = getPostBySlug(params.slug);
-  
-  if (!post) {
-    return {
-      title: 'Post Not Found | EA Global',
-      description: 'The requested blog post could not be found.'
-    };
-  }
-
-  return {
-    title: post.metadata.title,
-    description: post.metadata.description,
-    keywords: post.metadata.keywords,
-    openGraph: {
-      title: post.metadata.title,
-      description: post.metadata.description,
-      images: [post.image],
-    },
+type PageProps = {
+  params: {
+    slug: string;
   };
 }
 
-export default function BlogPost({ params }: Props) {
-  const post = getPostBySlug(params.slug);
+export async function generateStaticParams() {
+  const slugs = await getStaticPaths();
+  console.log('Generated slugs:', slugs);
+  return slugs.map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  try {
+    const { slug } = await params; // Await params before using
+    const post = await getPostData(slug);
+    
+    if (!post) {
+      return {
+        title: 'Post Not Found | EA Global',
+        description: 'The requested blog post could not be found.'
+      };
+    }
+
+    return {
+      title: post.metadata.title,
+      description: post.metadata.description,
+      keywords: post.metadata.keywords,
+      openGraph: {
+        title: post.metadata.title,
+        description: post.metadata.description,
+        images: [post.image],
+      },
+    };
+  } catch (error) {
+    console.error('Error generating metadata:', error);
+    return {
+      title: 'Error | EA Global',
+      description: 'An error occurred while loading the blog post.'
+    };
+  }
+}
+
+export default async function BlogPost({ params }: PageProps) {
+  const { slug } = await params; // Await params before using
+  const post = await getPostData(slug);
 
   if (!post) {
     return (
@@ -51,7 +72,6 @@ export default function BlogPost({ params }: Props) {
 
   return (
     <article className="container mx-auto px-4 py-24 max-w-4xl">
-      {/* Add structured data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -111,7 +131,6 @@ export default function BlogPost({ params }: Props) {
         ))}
       </div>
 
-      {/* Related Posts Section */}
       {post.relatedPosts && post.relatedPosts.length > 0 && (
         <div className="mt-16 pt-8 border-t border-gray-200">
           <h3 className="text-2xl font-bold mb-6">Related Articles</h3>

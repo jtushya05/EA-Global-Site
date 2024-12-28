@@ -42,7 +42,7 @@ export function getAllSlugs(): string[] {
 }
 
 // Get a specific post by slug
-export function getPostBySlug(slug: string): BlogPost | undefined {
+export async function getPostBySlug(slug: string): Promise<BlogPost | undefined> {
   return allPosts[slug];
 }
 

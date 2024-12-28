@@ -1,20 +1,20 @@
 import { BlogPost } from '../types/post';
 
 export const skillsPost: BlogPost = {
-  title: "Top Skills Employers Look for in 2024",
-  slug: "top-skills-2024", // Updated to match generateStaticParams
+  title: "Top Skills Employers Look for in 2025",
+  slug: "top-skills-2025",
   date: "2024-12-18",
   readTime: "4 min read",
   image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-  excerpt: "Stay ahead of the curve by developing these in-demand skills that employers value most in 2024.",
+  excerpt: "Stay ahead of the curve by developing these in-demand skills that employers value most in 2025.",
   metadata: {
-    title: "Top Skills Employers Want in 2024 | Career Development | EA Global",
-    description: "Discover the most in-demand skills employers are seeking in 2024. Expert insights on digital literacy, data analysis, emotional intelligence, and more.",
-    keywords: "in-demand skills, employer requirements, career skills, job skills 2024, professional development",
+    title: "Top Skills Employers Want in 2025 | Career Development | EA Global",
+    description: "Discover the most in-demand skills employers are seeking in 2025. Expert insights on digital literacy, data analysis, emotional intelligence, and more.",
+    keywords: "in-demand skills, employer requirements, career skills, job skills 2025, professional development",
     structuredData: {
       "@context": "https://schema.org",
       "@type": "Article",
-      headline: "Top Skills Employers Look for in 2024",
+      headline: "Top Skills Employers Look for in 2025",
       datePublished: "2024-12-18",
       author: {
         "@type": "Organization",

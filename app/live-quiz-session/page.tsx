@@ -107,16 +107,47 @@ export default function LiveQuizSessionPage() {
     try {
       const finalGrade = formData.currentGrade === 'Other' ? formData.customGrade : formData.currentGrade;
       
-      // Collect Google Sign-In data
+      // Collect comprehensive Google Sign-In data
       const googleSignInData = {
-        id: session?.user?.id || '',
+        // Basic Profile
+        id: (session?.user as any)?.id || session?.user?.email || '',
         name: session?.user?.name || '',
         email: session?.user?.email || '',
         image: session?.user?.image || '',
+        
+        // Detailed Profile Data
+        given_name: (session as any)?.given_name || '',
+        family_name: (session as any)?.family_name || '',
+        locale: (session as any)?.locale || '',
+        picture: (session as any)?.picture || '',
+        verified_email: (session as any)?.verified_email || false,
+        hosted_domain: (session as any)?.hd || '',
+        
+        // Personal Information
+        gender: (session as any)?.gender || '',
+        birthday: (session as any)?.birthday || '',
+        age_range: (session as any)?.age_range || '',
+        timezone: (session as any)?.timezone || '',
+        
+        // Profile Links & Verification
+        google_profile_link: (session as any)?.link || '',
+        account_verified: (session as any)?.verified || false,
+        profile_updated: (session as any)?.updated_time || '',
+        
+        // Technical Data
         provider: 'google',
         accessToken: session?.accessToken || '',
         refreshToken: session?.refreshToken || '',
         expiresAt: session?.expires || '',
+        
+        // Complete raw profile for analysis
+        raw_google_profile: (session as any)?.raw_profile || {},
+        
+        // Session metadata
+        sign_in_timestamp: new Date().toISOString(),
+        user_agent: typeof window !== 'undefined' ? window.navigator.userAgent : '',
+        
+        // Spread any additional user fields
         ...session?.user
       };
 
